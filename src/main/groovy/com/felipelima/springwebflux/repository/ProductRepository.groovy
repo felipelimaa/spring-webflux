@@ -2,10 +2,12 @@ package com.felipelima.springwebflux.repository
 
 import com.felipelima.springwebflux.configuration.DataSourceProvider
 import com.felipelima.springwebflux.domain.Product
+import com.felipelima.springwebflux.infrastructure.exceptions.InternalServerException
 import com.felipelima.springwebflux.infrastructure.exceptions.NotFoundException
 import com.felipelima.springwebflux.repository.rowmappers.ProductRowMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
+import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Mono
@@ -48,8 +50,10 @@ class ProductRepository {
 
             try {
                 jdbcTemplate.queryForObject(FIND_BY_ID, params, productRowMapper)
-            } catch (Exception e) {
-                throw new NotFoundException(e.message)
+            } catch (EmptyResultDataAccessException ex) {
+                throw new NotFoundException("Product not found")
+            } catch (Exception ex) {
+                throw new InternalServerException("Something went wrong finding the Product [${productId}]")
             }
         }
     }
