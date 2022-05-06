@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mysql-webflux:
+    platform: linux/x86_64
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=webflux
+      - MYSQL_USER=webflux
+      - MYSQL_PASSWORD=webflux
+      - MYSQL_DATABASE=webflux
+    networks:
+      - main
+    ports:
+      - "3306:3306"
+    networks:
+      - mongo-compose-network
+
+networks:
+  mongo-compose-network:
+    driver: bridge
