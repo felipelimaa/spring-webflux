@@ -14,12 +14,15 @@ class ProductDto {
 
     BigDecimal price
 
+    String status
+
     def buildWith(Product product) {
         this.id = product.id
         this.brand = product.brand
         this.description = product.description
         this.color = product.color
         this.price = product.price
+        this.status = product.status
     }
 
 }

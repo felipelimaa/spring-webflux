@@ -34,7 +34,8 @@ class ProductRepository {
            p.Brand,
            p.Description,
            p.Color,
-           p.Price
+           p.Price,
+           p.Status
         FROM
             Products p
         WHERE

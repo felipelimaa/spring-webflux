@@ -15,6 +15,7 @@ class ProductRowMapper implements RowMapper<Product>{
     static final String DESCRIPTION = "Description"
     static final String COLOR = "Color"
     static final String PRICE = "Price"
+    static final String STATUS = "Status"
 
     @Override
     Product mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -24,6 +25,7 @@ class ProductRowMapper implements RowMapper<Product>{
         product.description = resultSet.getString(DESCRIPTION)
         product.color = resultSet.getString(COLOR)
         product.price = resultSet.getBigDecimal(PRICE)
+        product.status = resultSet.getString(STATUS)
         product
     }
 

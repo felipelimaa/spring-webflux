@@ -16,6 +16,8 @@ class ProductResource {
 
     BigDecimal price
 
+    String status
+
     static ProductResource buildResponse(Product product) {
         ProductResource productResource = new ProductResource()
         productResource.id = product.id
@@ -23,6 +25,7 @@ class ProductResource {
         productResource.description = product.description
         productResource.color = product.color
         productResource.price = product.price
+        productResource.status = product.status
         productResource
     }
 

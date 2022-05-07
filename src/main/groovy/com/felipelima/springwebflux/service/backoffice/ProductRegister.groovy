@@ -30,12 +30,14 @@ class ProductRegister {
             Brand,
             Description,
             Color,
-            Price
+            Price,
+            Status
         ) VALUES (
             :Brand,
             :Description,
             :Color,
-            :Price
+            :Price,
+            :Status
         )
     '''
 

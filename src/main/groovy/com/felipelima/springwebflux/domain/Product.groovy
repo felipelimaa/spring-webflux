@@ -17,4 +17,6 @@ class Product {
 
     BigDecimal price
 
+    String status
+
 }
